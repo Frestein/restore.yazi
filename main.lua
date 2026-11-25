@@ -1,4 +1,5 @@
 --- @since 26.9.1
+-- Modified in 2026 by Frestein
 
 local M = {}
 local shell = os.getenv("SHELL") or ""
