@@ -1,4 +1,4 @@
---- @since 25.5.31
+--- @since 26.9.1
 
 local M = {}
 local shell = os.getenv("SHELL") or ""
@@ -298,23 +298,6 @@ function M:entry(job)
 			})
 				:align(ui.Align.LEFT)
 				:wrap(ui.Wrap.YES),
-			-- TODO: remove this after next yazi released
-			content = ui.Text({
-				ui.Line(""),
-				ui.Line(
-					#reversed_trashed_items
-						.. " file"
-						.. (#reversed_trashed_items <= 1 and " " or "s ")
-						.. "and folder"
-						.. (#reversed_trashed_items <= 1 and " " or "s ")
-						.. (#reversed_trashed_items <= 1 and "is " or "are ")
-						.. "going to be restored:"
-				):style(theme.header),
-				ui.Line(""),
-				table.unpack(get_components(reversed_trashed_items)),
-			})
-				:align(ui.Align.LEFT)
-				:wrap(ui.Wrap.YES),
 			pos = pos,
 		})
 		-- stopping
@@ -328,23 +311,6 @@ function M:entry(job)
 		overwrite_confirmed = ya.confirm({
 			title = ui.Line("Restore files/folders"):style(theme.title),
 			body = ui.Text({
-				ui.Line(""),
-				ui.Line(
-					#reversed_collided_items
-						.. " file"
-						.. (#reversed_collided_items <= 1 and " " or "s ")
-						.. "and folder"
-						.. (#reversed_collided_items <= 1 and " " or "s ")
-						.. (#reversed_collided_items <= 1 and "is " or "are ")
-						.. "existed, overwrite?"
-				):style(theme.header_warning),
-				ui.Line(""),
-				table.unpack(get_components(reversed_collided_items)),
-			})
-				:align(ui.Align.LEFT)
-				:wrap(ui.Wrap.YES),
-			-- TODO: remove this after next yazi released
-			content = ui.Text({
 				ui.Line(""),
 				ui.Line(
 					#reversed_collided_items
